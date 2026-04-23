@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import messagebox
 import winsound
 
-# ---------------- SCENARIOS ---------------- #
 scenarios = [
     {
         "type": "Phishing Email",
@@ -37,12 +36,10 @@ scenarios = [
     }
 ]
 
-# ---------------- VARIABLES ---------------- #
 current_question = 0
 score = 0
 time_left = 10
 
-# ---------------- FUNCTIONS ---------------- #
 
 def start_simulation():
     start_frame.pack_forget()
@@ -56,7 +53,7 @@ def load_question():
     if current_question < len(scenarios):
         scenario = scenarios[current_question]
 
-        # Play alert sound
+      
         winsound.Beep(1000, 300)
 
         question_label.config(
@@ -67,11 +64,11 @@ def load_question():
 
         score_label.config(text=f"Security Awareness Score: {score}")
 
-        # Reset timer
+      
         time_left = 10
         start_timer()
 
-        # Trigger fake login if needed
+      
         if "login" in scenario and scenario["login"]:
             root.after(1500, open_fake_login)
 
@@ -160,13 +157,11 @@ def show_final_result():
     )
 
 
-# ---------------- GUI SETUP ---------------- #
 root = tk.Tk()
 root.title("Cyber Range - Phishing Attack Simulator")
 root.geometry("700x500")
 root.config(bg="#e6f2ff")
 
-# ---------- START SCREEN ---------- #
 start_frame = tk.Frame(root, bg="#e6f2ff")
 
 title = tk.Label(
@@ -197,7 +192,6 @@ start_btn.pack(pady=20)
 
 start_frame.pack(expand=True)
 
-# ---------- MAIN SIMULATION ---------- #
 main_frame = tk.Frame(root, bg="#e6f2ff")
 
 score_label = tk.Label(
@@ -249,5 +243,4 @@ safe_btn = tk.Button(
 )
 safe_btn.pack(pady=5)
 
-# ---------------- RUN ---------------- #
 root.mainloop()
